@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  get 'vehicles/new'
 
-  get 'users/new'
+  get 'vehicles/show'
+
+  get 'vehicles/edit'
+
+  get 'vehicles/update'
+
+  get 'vehicles/destroy'
 
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
@@ -15,4 +21,5 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :vehicles
 end

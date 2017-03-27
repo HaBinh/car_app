@@ -209,6 +209,11 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+input[type="checkbox"] {
+  margin-bottom: 15px;
+  width: 25px;
+}
+
 input {
   height: auto !important;
 }

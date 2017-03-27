@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  isCar: false
+  brand: MyString
+  model: MyString
+  price: 1
+  seat: 1
+  about: MyString
+
+two:
+  isCar: false
+  brand: MyString
+  model: MyString
+  price: 1
+  seat: 1
+  about: MyString
