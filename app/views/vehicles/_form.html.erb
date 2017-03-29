@@ -12,17 +12,17 @@
  <%= f.label "Đời xe (Model):" %>
   <%= f.text_field :model, class: 'form-control' %>
 
- <%#= f.label :price %>
-  <%#= f.number_field :price class: 'form-control' %>
-  <label for="vehicle_price">Đơn giá (/ngày):</label>
+ <%= f.label "Đơn giá: (/ngày)" %>
+  <%= f.number_field :price, class: 'form-control' %>
+  <!-- <label for="vehicle_price">Đơn giá (/ngày):</label>
   <input id="vehicle_price" class="form-control" name="vehicle[price]" type="number"  />
-
- <%#= f.label :seat %>
-  <%#= f.number_field :seat class: 'form-control' %>
-  <label for="vehicle_seat">Số chỗ:</label>
+ -->
+ <%= f.label "Số chỗ ngồi:" %>
+  <%= f.number_field :seat, class: 'form-control' %>
+  <!-- <label for="vehicle_seat">Số chỗ:</label>
   <input id="vehicle_seat" class="form-control" name="vehicle[seat]" type="number" />
-
- <%= f.label "Chi tiết" %>
+ -->
+ <%= f.label "Chi tiết:" %>
   <%= f.text_area :about, class: 'form-control' %>
 
 

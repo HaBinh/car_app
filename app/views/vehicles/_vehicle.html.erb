@@ -1,0 +1,10 @@
+<li>
+    <%= link_to vehicle.brand, vehicle %>
+    <%= link_to vehicle.model, vehicle %> </br>
+    <% if current_user.mod? && !current_user?(@user) %>
+	    <%= link_to "Delete", vehicle, method: :delete, class: "btn btn-primary",
+	                                  data: { confirm: "You sure?" } %>
+	    <%= link_to "Update", edit_vehicle_path(vehicle), class: "btn btn-primary" %>
+		<% end %>
+</li>
+

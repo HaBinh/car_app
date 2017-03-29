@@ -1,4 +1,8 @@
 class VehiclesController < ApplicationController
+  def index
+    @vehicles = Vehicle.paginate(page: params[:page])
+  end
+
   def new
     @vehicle = Vehicle.new
   end
@@ -6,7 +10,8 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     if @vehicle.save
-      flash[:info] = "Successed"
+      flash[:succes] = "Successed"
+      redirect_to 
     else 
       render 'new'
     end
@@ -17,12 +22,23 @@ class VehiclesController < ApplicationController
   end
 
   def edit
+    @vehicle = Vehicle.find(params[:id])
   end
 
   def update
+    @vehicle = Vehicle.find(params[:id])
+    if @vehicle.update_attributes(vehicle_params)
+      flash[:success] = "Vehicle updated"
+      redirect_to 
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    Vehicle.find(params[:id]).destroy
+    flash[:succes] = "Vehicle deleted"
+    redirect_to vehicles_url
   end
 
   private

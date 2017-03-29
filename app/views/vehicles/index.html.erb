@@ -1,0 +1,10 @@
+<% provide(:title, 'All vehicle') %>
+<h1>Tất cả xe</h1>
+
+<%= will_paginate %>
+
+<ul class="vehicles">
+    <%= render @vehicles %>
+</ul>
+
+<%= will_paginate %>
