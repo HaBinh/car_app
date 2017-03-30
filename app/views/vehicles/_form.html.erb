@@ -1,10 +1,11 @@
 <%= form_for(@vehicle) do |f| %>
   <%= render 'shared/error_messages', object: @vehicle %>
 
- <%= f.label "Xe ô tô? " %> 
-  <%= f.check_box :isCar %> 
-  <%= f.label "Xe máy? " %> 
-  <input type="checkbox" name=""></br>
+ <%= f.label "Loại xe" %>
+<select name="vehicle[isCar]">
+  <option value="true">Ô tô</option>
+  <option value="false">Xe máy</option>
+</select>
 
  <%= f.label "Nhãn hiệu:" %>
   <%= f.text_field :brand, class: 'form-control' %>
@@ -14,14 +15,10 @@
 
  <%= f.label "Đơn giá: (/ngày)" %>
   <%= f.number_field :price, class: 'form-control' %>
-  <!-- <label for="vehicle_price">Đơn giá (/ngày):</label>
-  <input id="vehicle_price" class="form-control" name="vehicle[price]" type="number"  />
- -->
+  
  <%= f.label "Số chỗ ngồi:" %>
   <%= f.number_field :seat, class: 'form-control' %>
-  <!-- <label for="vehicle_seat">Số chỗ:</label>
-  <input id="vehicle_seat" class="form-control" name="vehicle[seat]" type="number" />
- -->
+  
  <%= f.label "Chi tiết:" %>
   <%= f.text_area :about, class: 'form-control' %>
 

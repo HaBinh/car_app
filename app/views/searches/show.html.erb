@@ -1,0 +1,12 @@
+<% provide(:title, 'Result') %>
+<h1>Kết quả tìm kiếm</h1>
+
+<% if @vehicles.empty? %>
+	<p>Không tìm thấy xe nào phù hợp</p>
+<% else %>
+	<%= will_paginate @vehicles%>
+	<ul class="vehicles">
+	    <%= render @vehicles %>
+	</ul>
+	<%= will_paginate @vehicles%>
+<% end %>

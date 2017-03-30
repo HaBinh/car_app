@@ -4,7 +4,7 @@ class VehiclesController < ApplicationController
   end
 
   def search
-    @vehicles = Vehicle.where(["brand LIKE ?", "%#{params[:search]}%"]).paginate(page: params[:page])
+    @vehicles = Vehicle.search(params[:search]).paginate(page: params[:page])
   end
 
   def new
@@ -51,7 +51,7 @@ class VehiclesController < ApplicationController
       params.require(:vehicle).permit(:isCar, :brand, :model, :price, :seat, :about)
     end
 
-    # Before filters
+    
 
     
 end

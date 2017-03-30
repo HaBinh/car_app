@@ -1,0 +1,29 @@
+<% provide(:title, "Advanced Search") %>
+<h1>Tìm kiếm nâng cao</h1>
+<%= form_for @search do |f| %>
+  <p>
+    <%= f.label "Nhãn hiệu" %><br />
+    <%= f.text_field :brand %>
+  </p>
+  <p>
+    <%= f.label "Loại xe" %><br />
+    <select name="search[isCar]">
+      <option value="true">Ô tô</option>
+      <option value="false">Xe máy</option>
+    </select>
+  </p>
+  <p>
+    Price Range<br />
+    <%= f.text_field :min_price, :size => 7 %> -
+    <%= f.text_field :max_price, :size => 7 %>
+  </p>
+  <p>
+    <%= f.label "Ngày nhận" %><br />
+    <%= f.datetime_local_field :start_date %>
+  </p>
+  <p>
+    <%= f.label "Ngày trả" %><br />
+    <%= f.datetime_local_field :end_date %>
+  </p>  
+  <p><%= f.submit "Submit" %></p>
+<% end %>

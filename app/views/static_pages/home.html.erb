@@ -1,11 +1,13 @@
-<div class="col-md-4">
+<div class="col-md-3">
+  <h4>Tìm kiếm hãng xe</h4>
   <%= form_tag vehicles_search_path, :method => 'get'  do %>
     <%= text_field_tag :search, params[:search]%>
     <%= submit_tag "Search" %>
   <% end %>
+  <%= link_to("Tìm kiếm nâng cao", new_search_path ) %>
 </div>
 
-<div class="col-md-8">
+<div class="col-md-9">
   <% if logged_in? %>
     <div class="row">
       <aside class="col-md-4">
