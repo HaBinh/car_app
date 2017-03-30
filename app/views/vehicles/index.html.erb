@@ -1,6 +1,7 @@
 <% provide(:title, 'All vehicle') %>
 <h1>Tất cả xe</h1>
 
+<%= link_to "Thêm xe mới", new_vehicle_path, class: "btn btn-primary btn-lg" %>
 <%= will_paginate %>
 
 <ul class="vehicles">

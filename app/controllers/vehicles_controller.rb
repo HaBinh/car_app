@@ -3,6 +3,10 @@ class VehiclesController < ApplicationController
     @vehicles = Vehicle.paginate(page: params[:page])
   end
 
+  def search
+    @vehicles = Vehicle.where(["brand LIKE ?", "%#{params[:search]}%"]).paginate(page: params[:page])
+  end
+
   def new
     @vehicle = Vehicle.new
   end
@@ -49,8 +53,5 @@ class VehiclesController < ApplicationController
 
     # Before filters
 
-    # def get_vehicle
-    #   @vehicle = vehicle.find_by(email: params[:email])
-    # end
-
+    
 end
