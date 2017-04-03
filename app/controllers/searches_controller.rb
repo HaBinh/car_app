@@ -13,7 +13,7 @@ class SearchesController < ApplicationController
 	def show
 		@search = Search.find(params[:id])
 		@vehicles = @search.search_vehicles.paginate(page: params[:page])
-		
+		Search.find(params[:id]).destroy
 	end
 
 	private
