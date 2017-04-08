@@ -1,10 +1,9 @@
 class RentalsController < ApplicationController
+  before_action :logged_in_user, only: [:create, :update, :destroy]
   include SessionsHelper
 
   def new
     @rental = Rental.new
-    session[:user_id]    = params[:user_id]
-    session[:vehicle_id] = params[:vehicle_id]
   end
 
   def create
@@ -18,7 +17,7 @@ class RentalsController < ApplicationController
       flash[:success] = "Request rental has been sent"
       redirect_to root_path
     else 
-      flash[:warning] = "You did something wrong"     
+      flash[:warning] = "Date not available. Please choose again."     
       redirect_to new_rental_path(vehicle: params[:vehicle_id])
     end
   end
@@ -41,7 +40,9 @@ class RentalsController < ApplicationController
 
   private 
     def available_to_rental?
-      return false if params[:rental][:start_at].blank? || params[:rental][:end_at].blank?
+      if params[:rental][:start_at].blank? || params[:rental][:end_at].blank?
+        return false 
+      end
       true
     end
 

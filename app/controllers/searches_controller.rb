@@ -6,8 +6,13 @@ class SearchesController < ApplicationController
 	end
 
 	def create
-		@search = Search.create(search_params)
-		redirect_to @search
+		if params[:search][:start_date].present? && params[:search][:end_date].present? && params[:search][:start_date] > params[:search][:end_date]
+		    flash[:warning] = "You did something wrong"     
+		    redirect_to new_search_path
+	    else 
+			@search = Search.create(search_params)
+			redirect_to @search
+    	end
 	end
 
 	def show

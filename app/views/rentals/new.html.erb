@@ -9,11 +9,11 @@
   </p>
   <p>
     <%= f.label "Ngày nhận" %><br />
-    <%= f.datetime_field :start_at %>
+    <%= f.date_field :start_at %>
   </p>
   <p>
     <%= f.label "Ngày trả" %><br />
-    <%= f.datetime_field :end_at %>
+    <%= f.date_field :end_at %>
   </p>  
   <%= hidden_field_tag :vehicle_id, params[:vehicle] %>
 

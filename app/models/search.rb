@@ -1,4 +1,5 @@
 class Search < ApplicationRecord
+	
 	def search_vehicles
 		vehicles = Vehicle.all
 
