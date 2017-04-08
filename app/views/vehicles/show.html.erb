@@ -2,3 +2,15 @@
 <h1>
    <%= @vehicle.model %>
 </h1>
+<div class="vehicle">
+	<h4>Nhãn hiệu</h4>
+	<%= @vehicle.brand %>
+	<h4>Đơn giá</h4>
+	<%= @vehicle.price %> Đồng / Ngày
+	<h4>Sô chỗ ngồi</h4>
+	<%= @vehicle.seat %>
+	<h4>Chi tiết</h4>
+	<%= @vehicle.about %>	
+</div>
+
+<%= link_to("Đặt xe", new_rental_path(vehicle: @vehicle.id) , class: "btn btn-primary") %>

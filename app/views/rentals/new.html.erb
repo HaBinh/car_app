@@ -1,0 +1,22 @@
+<%= form_for @rental do |f| %>
+  <p>
+    <%= f.label "Model" %><br />
+    <%= Vehicle.find_by(id: params[:vehicle]).model %>
+  </p>
+  <p>
+    <%= f.label "Đơn giá" %><br />
+    <%= Vehicle.find_by(id: params[:vehicle]).price %>
+  </p>
+  <p>
+    <%= f.label "Ngày nhận" %><br />
+    <%= f.datetime_field :start_at %>
+  </p>
+  <p>
+    <%= f.label "Ngày trả" %><br />
+    <%= f.datetime_field :end_at %>
+  </p>  
+  <%= hidden_field_tag :vehicle_id, params[:vehicle] %>
+
+
+  <p><%= f.submit "Submit" %></p>
+<% end %>

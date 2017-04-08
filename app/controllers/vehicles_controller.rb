@@ -22,6 +22,7 @@ class VehiclesController < ApplicationController
   end
 
   def show
+    session[:vehicle_id] = params[:id].to_i
     @vehicle = Vehicle.find(params[:id])
   end
 

@@ -1,12 +1,13 @@
 <li>
-    <%= link_to vehicle.brand, vehicle %>
     <%= link_to vehicle.model, vehicle %> </br>
+    <%= vehicle.brand%> </br>
+    <%= vehicle.price%> Đồng / Ngày </br>
     <% if logged_in? %>
 	    <% if current_user.mod? && !current_user?(@user) %>
 		    <%= link_to "Xóa", vehicle, method: :delete, class: "btn btn-primary",
 		                                  data: { confirm: "You sure?" } %>
 		    <%= link_to "Cập nhật", edit_vehicle_path(vehicle), class: "btn btn-primary" %>
-			<% end %>
+		<% end %>
 	<% end %>
 </li>
 
