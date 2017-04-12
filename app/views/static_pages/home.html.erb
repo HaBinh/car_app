@@ -9,17 +9,11 @@
 
 <div class="col-md-9">
   <% if logged_in? %>
-    <div class="row">
-      <aside class="col-md-4">
-        <section class="user_info">
-          <%= render 'shared/user_info' %>
-        </section>
-      </aside>
-      <div class="col-md-8">
-        <h3>Lịch sử thuê xe</h3>
-        <%= render @vehicles %>
-      </div>
-    </div>
+    <% if current_user.mod? %>
+      <%= render 'mod' %>
+    <% else %>
+      <%= render 'user' %>
+    <% end %>
   <% else %>
   	<div class="center jumbotron">
   	  <h1> THUÊ XE CHẤT LƯỢNG, GIÁ CẢ HỢP LÝ </h1>

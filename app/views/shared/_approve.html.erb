@@ -1,0 +1,8 @@
+<td>
+  <%= form_for object, method: :patch do |f| %>
+    <%= hidden_field_tag :verify, true %> 
+    <%= hidden_field_tag :user_id, object.user_id %>
+    <%= hidden_field_tag :vehicle_id, object.vehicle_id %>
+    <%= f.submit "Approve", class: 'btn btn-primary' %>
+  <% end %>
+</td>

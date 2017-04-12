@@ -1,10 +1,11 @@
 class StaticPagesController < ApplicationController
   def home
-  	if logged_in?
+  	if @user = current_user
       @rentals = current_user.rentals.where(["status LIKE ? ", -1])
       @vehicles = Array.new
-      @date = Array.new
-      @rentals.each {|b| @vehicles << Vehicle.find_by(id: b.vehicle_id)}      
+      @rentals.each do |b| 
+        @vehicles << Vehicle.find_by(id: b.vehicle_id)
+        end      
     end
   end
 
