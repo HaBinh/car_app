@@ -1,6 +1,17 @@
 <h1>Tất cả các yêu cầu</h1>
-<ul>
-  <% get_request.each do |e| %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nhãn hiệu</th>
+      <th>Đời xe</th>
+      <th>User</th>
+      <th>Ngày nhận</th>
+      <th>Ngày trả</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% get_request.each do |e| %>
       <tr>
         <td><%= Vehicle.find_by(id: e.vehicle_id).brand%></td>
         <td><%= Vehicle.find_by(id: e.vehicle_id).model %></td>
@@ -8,7 +19,8 @@
         <td><%= e.start_at %></td>
         <td><%= e.end_at %></td>
         <%= render 'shared/approve', object: e %>
-        <%#= render 'shared/deny',    object: e%>
+        <%= render 'shared/deny',    object: e%>
       </tr>
-  <% end %>
-</ul>
+    <% end %>
+  </tbody>
+</table>    

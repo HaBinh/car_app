@@ -15,7 +15,7 @@ class RentalsController < ApplicationController
                               verified: false,
                               start_at: params[:rental][:start_at],
                               end_at: params[:rental][:end_at])
-      flash[:success] = "Request rental has been sent"
+        flash[:success] = "Request rental has been sent"
       redirect_to root_path
     else 
       flash[:warning] = "Date not available. Please choose again."     
@@ -25,16 +25,8 @@ class RentalsController < ApplicationController
 
   def update
     if current_user.mod?
-      # verify borrow book
-      if params[:verify] 
-          @rental.verify_rental
-      # Send request extend time borrow books
-      elsif params[:extend_book] 
-        @borrowing.extend_due_time(@borrowing.time_extend)
-      end
-    # Non admin
-    elsif current_user(@user) && params[:request_extend]
-      check_extend_book(params[:extension_day])
+      # verify request
+        @rental.verify_rental
     else
       flash[:danger] = "You did something wrong!"
     end
@@ -48,20 +40,21 @@ class RentalsController < ApplicationController
 
   private 
     def available_to_rental?
-      if params[:rental][:start_at].blank? || params[:rental][:end_at].blank?
-        return false 
+      @vehicle = Vehicle.find(params[:vehicle_id])
+      if params[:rental][:start_at].blank? || params[:rental][:end_at].blank?  || (params[:rental][:start_at] > params[:rental][:end_at])
+       return false
+      elsif @vehicle.end_at.nil? || (params[:rental][:start_at] > @vehicle.end_at ) || (params[:rental][:end_at] < @vehicle.start_at) 
+        return true
       end
-      true
+      false
     end
 
     def get_user_and_vehicle
-      @user = User.find(params[:user_id])
+      @user = User.find(current_user.id)
       @vehicle = Vehicle.find(params[:vehicle_id])
     end
 
     def get_rental
       @rental = Rental.find_by(id: params[:id])
     end
-
-
 end

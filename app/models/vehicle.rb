@@ -14,4 +14,8 @@ class Vehicle < ApplicationRecord
         all
       end
     end
+
+    # def update_date
+    #   update_columns(start_at: )
+    # end
 end

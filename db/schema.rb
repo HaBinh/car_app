@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20170407095032) do
     t.integer  "vehicle_id"
     t.datetime "start_at"
     t.datetime "end_at"
-    t.boolean  "verified"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "verified",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "status"
   end
 
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 20170407095032) do
     t.string   "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "end_at"
     t.datetime "start_at"
+    t.datetime "end_at"
   end
 
 end

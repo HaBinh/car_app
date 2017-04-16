@@ -1,7 +1,7 @@
 <td>
-  <%= form_for object, method: :patch do |f| %>
+  <%= form_for object, method: :delete do |f| %>
     <%= hidden_field_tag :user_id, object.user_id %>
     <%= hidden_field_tag :vehicle_id, object.vehicle_id %>
-    <%= f.submit "Approve", class: 'btn btn-primary' %>
+    <%= f.submit "Deny", class: 'btn btn-warning' %>
   <% end %>
 </td>
