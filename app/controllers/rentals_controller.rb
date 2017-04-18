@@ -10,14 +10,19 @@ class RentalsController < ApplicationController
 
   def create
     if available_to_rental?
-      @rental = Rental.create(user_id:    current_user.id,
-                              vehicle_id: params[:vehicle_id],
-                              verified: false,
-                              start_at: params[:rental][:start_at],
-                              end_at: params[:rental][:end_at])
-      current_user.increment!(:num_of_rentals);
-      flash[:success] = "Request rental has been sent"
-      redirect_to root_path
+      if current_user.num_of_rentals == 5
+        flash[:warning] = "Can't send over 5 requests."
+        redirect_to root_path  
+      else
+        @rental = Rental.create(user_id:    current_user.id,
+                                vehicle_id: params[:vehicle_id],
+                                verified: false,
+                                start_at: params[:rental][:start_at],
+                                end_at: params[:rental][:end_at])
+        current_user.increment!(:num_of_rentals);
+        flash[:success] = "Request rental has been sent"
+        redirect_to root_path
+      end
     else 
       flash[:warning] = "Date not available. Please choose again."     
       redirect_to new_rental_path(vehicle: params[:vehicle_id])

@@ -11,6 +11,7 @@
 <% end %>
 
 <% unless @user.nil? %>
+    <h3>User: <%= @user.name %></h3>
     <% if @willRentals.count == 0 %>
         <h4><%= @user.name %> không có bất kỳ yêu cầu nào đang chờ</h4>
     <% else %>
