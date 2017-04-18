@@ -6,6 +6,8 @@ michael:
   activated: true
   activated_at: <%= Time.zone.now %>
 
+
+
 archer:
   name: Sterling Archer
   email: duchess@example.gov

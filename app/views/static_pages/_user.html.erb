@@ -5,7 +5,11 @@
         </section>
       </aside>
       <div class="col-md-8">
-        <h3>Lịch sử thuê xe</h3>
+        <h3>Yêu cầu thuê xe đã được chấp nhận</h3>
+        <%= render @willVehicles %>
+        <h3>Xe đang thuê</h3>
         <%= render @vehicles %>
+        <h3>Lịch sử thuê xe</h3>
+        <%= render @pastVehicles %>
       </div>
 </div>

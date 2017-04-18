@@ -1,0 +1,24 @@
+<h2 class="text-center"></h3>
+
+<%= form_tag manage_path, method: :get, class: 'form-inline' do %>
+  <div class="form-group">
+    <label>Nhập user id: </label>
+    <div class="input-group">
+      <input name="search_user_id" id="search_user_id" class="form-control" type="number">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Search</button>
+<% end %>
+
+<% unless @user.nil? %>
+    <% if @willRentals.count == 0 %>
+        <h4><%= @user.name %> không có bất kỳ yêu cầu nào đang chờ</h4>
+    <% else %>
+        <%= render 'shared/willRentals', object: @willRentals %>
+    <% end %>
+    <% if @rentals.count == 0 %>
+        <h4><%= @user.name %> không có xe nào đang thuê</h4>
+    <% else %>
+        <%= render 'shared/rentals', object: @rentals %>
+    <% end %>
+<% end %>

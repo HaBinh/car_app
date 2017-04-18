@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get  '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/manage', to: 'static_pages#manage'
+  patch '/take_vehicle', to: 'rentals#take_vehicle'
+  patch '/return_vehicle', to: 'rentals#return_vehicle'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]

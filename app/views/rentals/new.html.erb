@@ -1,22 +1,49 @@
-<%= form_for @rental do |f| %>
-  <p>
-    <%= f.label "Model" %><br />
-    <%= Vehicle.find_by(id: params[:vehicle]).model %>
-  </p>
-  <p>
-    <%= f.label "Đơn giá" %><br />
-    <%= Vehicle.find_by(id: params[:vehicle]).price %>
-  </p>
-  <p>
-    <%= f.label "Ngày nhận" %><br />
-    <%= f.date_field :start_at %>
-  </p>
-  <p>
-    <%= f.label "Ngày trả" %><br />
-    <%= f.date_field :end_at %>
-  </p>  
-  <%= hidden_field_tag :vehicle_id, params[:vehicle] %>
+<h1>
+  <%= Vehicle.find_by(id: params[:vehicle]).model %>
+</h1>
+<div class="col-lg-6 col-md-6">
+  <img src="http://thuexeotodanang.com.vn/data/thuexe/500/thue-xe-7-cho-fortuner-da-nang-1488991133.jpg">
+</div>
+<div class="col-lg-6 col-md-6">
+  <%= form_for @rental do |f| %>
+    <p>
+      <%= f.label "Nhãn hiệu" %><br />
+      <%= Vehicle.find_by(id: params[:vehicle]).brand %>
+    </p>
+    <p>
+      <%= f.label "Đời xe" %><br />
+      <%= Vehicle.find_by(id: params[:vehicle]).model %>
+    </p>
+    <p>
+      <%= f.label "Đơn gía" %><br />
+      <%= Vehicle.find_by(id: params[:vehicle]).price %>
+    </p>
+    <p>
+      <%= f.label "Ngày nhận" %><br />
+      <%= f.date_field :start_at, :id => "ngay-muon" %>
+    </p>
+    <p>
+      <%= f.label "Ngày trả" %><br />
+      <%= f.date_field :end_at, :id => "ngay-tra" %>
+    </p>  
+    <%= hidden_field_tag :vehicle_id, params[:vehicle] %>
+    <div>
+    <button id="do">Tam Tinh</button>
+    <p id="result"></p>
+    <br>
+    </div>
 
+   <p><%= f.submit "Request" %></p>
+    
+    <script >
+     $('#do').click(function(e) {
+        e.preventDefault();
+        let ngayMuon = new Date($('#ngay-muon').val()).getTime();
+        let ngayTra = new Date($('#ngay-tra').val()).getTime();
+        let soNgay = (ngayTra - ngayMuon)/1000/60/60/24;
 
-  <p><%= f.submit "Submit" %></p>
-<% end %>
+       $('#result').html(soNgay*<%= Vehicle.find_by(id: params[:vehicle]).price %> + ' Đồng');
+      });
+   </script>
+  <% end %>
+</div>

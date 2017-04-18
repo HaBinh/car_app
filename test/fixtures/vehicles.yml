@@ -9,9 +9,19 @@ one:
   about: MyString
 
 two:
-  isCar: false
+  isCar: true
   brand: MyString
   model: MyString
   price: 1
   seat: 1
   about: MyString
+
+vehicle_unva:
+  isCar: true
+  brand: MyString
+  model: MyString
+  price: 100000
+  seat: 12
+  about: MyString
+  start_at: 2017-04-20 00:00:00
+  end_at: 2017-04-22 00:00:00

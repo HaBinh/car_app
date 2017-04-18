@@ -1,0 +1,22 @@
+<h3>Xe đang thuê</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Tên xe</th>
+      <th>Xác nhận</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% object.each do |e| %>
+      <tr>
+        <td><%= Vehicle.find_by(id: e.vehicle_id).brand %> <%= Vehicle.find_by(id: e.vehicle_id).model %></td>
+        <td>
+          <%= form_tag return_vehicle_path, method: :patch do %>
+            <%= hidden_field_tag :rental_id, e.id %>
+            <%= submit_tag "Trả xe", class: 'btn btn-primary' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>    
